@@ -9,6 +9,7 @@ public struct Page {
     public typealias Identifier = EntityIdentifier<Page, UUIDv4>
     public typealias PropertyName = String
     public let id: Identifier
+	public let url: String
     public let createdTime: Date
     public let lastEditedTime: Date
     public let createdBy: PartialUser
@@ -21,6 +22,7 @@ public struct Page {
     
     public init(
         id: Identifier,
+		url: String,
         createdTime: Date,
         lastEditedTime: Date,
         createdBy: PartialUser,
@@ -32,6 +34,7 @@ public struct Page {
         properties: [PropertyName: PageProperty]
     ) {
         self.id = id
+		self.url = url
         self.createdTime = createdTime
         self.lastEditedTime = lastEditedTime
         self.createdBy = createdBy
@@ -47,6 +50,7 @@ public struct Page {
 extension Page: Decodable {
     enum CodingKeys: String, CodingKey {
         case id
+		case url
         case createdTime = "created_time"
         case lastEditedTime = "last_edited_time"        
         case createdBy = "created_by"
